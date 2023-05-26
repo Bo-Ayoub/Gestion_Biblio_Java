@@ -29,6 +29,14 @@ public abstract class Personne {
 		this.CIN=CIN;
 		this.DateNaissance=DateNaissance;
 	}
+	public Personne(int id,String Nom,String Prenom,String NumeroTelephone,String CIN,Date DateNaissance) {
+		this.ID=id;
+		this.Nom=Nom;
+		this.Prenom=Prenom;
+		this.NumeroTelphone=NumeroTelephone;
+		this.CIN=CIN;
+		this.DateNaissance=DateNaissance;
+	}
 	
 	
 	// les getteurs et les setteurs
