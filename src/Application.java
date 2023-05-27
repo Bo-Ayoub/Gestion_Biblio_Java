@@ -1,11 +1,12 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String date="30-10-1999";
+		/*String date="30-10-1999";
 		Date d=null;
 		Etudiant et=null;
 		try {
@@ -16,9 +17,14 @@ public class Application {
 		}catch(Exception ex) {
 			
 			System.out.println(ex.getMessage());
+		}*/
+		Filiere f=new Filiere();
+		f.ajouterNiveau();
+		ArrayList<Niveau> n=f.getNiveau();
+		for(int i=0;i<n.size();i++) {
+			n.get(i).ajouterGroupe();
 		}
-		
-
+		System.out.println(n);
 	}
 
 }
