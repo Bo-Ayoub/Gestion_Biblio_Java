@@ -3,6 +3,8 @@ import java.util.Date;
 public class Etudiant extends Personne {
 
 	private String NumEtudiant;
+	private Groupe gr;
+	
 	
 	public Etudiant() {
 		super();
@@ -19,5 +21,12 @@ public class Etudiant extends Personne {
 	public void setNumEtudiant(String NumEtudiant) {
 		this.NumEtudiant=NumEtudiant;
 	}
+	public Groupe getGr() {
+		return gr;
+	}
+	public void setGr(Groupe gr) {
+		this.gr = gr;
+	}
+	
 	
 }
