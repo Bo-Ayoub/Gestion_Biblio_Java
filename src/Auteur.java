@@ -1,5 +1,8 @@
 import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Auteur {
@@ -10,6 +13,7 @@ public class Auteur {
 	
 	public static int cpt;
 	public static ArrayList<Auteur> auteurs=new ArrayList<Auteur>();
+	 private ArrayList<Livre> livres=new ArrayList<Livre>();
 	
 	public Auteur() {
 		this.id=Auteur.cpt;
@@ -61,6 +65,46 @@ public class Auteur {
 	}
 	
 	
+	public void AjouterLivre(Livre v) {
+		this.livres.add(v);
+	}
+	public void supprimerLivre(Livre v) {
+		this.livres.remove(v);
+	}
+	public void ModifierLivre() {
+		
+	}
+	public void listTousLIvre() {
+		for(Livre v : this.livres) {
+			System.out.println(v);
+		}
+	}
+	
+	
+	
+	
+	public void ajouterAuteur() throws ParseException {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Saisir le nom de l'auteur");
+		this.nom=sc.nextLine();
+		sc.nextLine();
+		
+		System.out.println("Saisir la date Naissance : DD-MM-YYYY");
+		String dateString=sc.nextLine();
+		Date date=new  SimpleDateFormat("dd-MM-yyyy").parse(dateString);
+		this.dateNaissance=date;
+		
+		Auteur.auteurs.add(this);
+		
+	}
+	public void supprimerAuteur() {
+		//faire rechercher
+	}
+	public void rechercherAuteur() {
+		
+	}
 	
 	
 	

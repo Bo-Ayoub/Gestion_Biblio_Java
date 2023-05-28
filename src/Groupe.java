@@ -53,14 +53,14 @@ public class Groupe {
 	}
 	
 	
-public void RemplirGroupe() {
-		
-		Scanner sc=new Scanner(System.in);
-		
-		System.out.println("Saisir libelle");
-		this.libelle=sc.nextLine();
-		
-	}
+	public void RemplirGroupe() {
+			
+			Scanner sc=new Scanner(System.in);
+			
+			System.out.println("Saisir libelle");
+			this.libelle=sc.nextLine();
+			
+		}
 	
 	
 	
