@@ -12,5 +12,9 @@ public class ResponsableBiblio extends Personne {
 		super(Nom,Prenom,NumeroTelephone,CIN,DateNaissance);
 	}
 	
+	public void AjouterResponsable() {
+		//Scanner sc=new Scanner(System.in);
+		
+	}
 	
 }

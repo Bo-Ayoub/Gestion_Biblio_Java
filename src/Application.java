@@ -1,9 +1,19 @@
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import com.google.common.collect.Lists;
 
 public class Application {
 	
+	static int id;
+	static String login;
 
 	public static void main(String[] args) {
 		
@@ -46,18 +56,54 @@ public class Application {
 		f.ajouterNiveau();
 		f.listTousNiveaux();*/
 		
-		int choix =menuGestionResponsableBiblio();
+/*		int choix=MenuLogin();
 		switch(choix) {
-		case 11:
+		case 1:
+			
+			break;
+		case 2:
+			break;
+		case 3:
 			System.out.println("Au revoir");
 			System.exit(1);
 			break;
 		}
 		
+		 choix =menuGestionResponsableBiblio();
+		switch(choix) {
+		case 11:
+			System.out.println("Au revoir");
+			System.exit(1);
+			break;
+		}*/
+		
+	/*	try {
+			System.out.println(Application.hashWithMd5("ayoub"));
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
+		//menuStatusProc();
+		 Application.MenuLoginProc();*/
 		
-		
+		ArrayList<String> message=new ArrayList<String>();
+		Scanner sc=new Scanner(System.in);
+		for(int i=0;i<6;i++) {
+			System.out.println("saisir message "+(i+1) );
+			message.add(sc.nextLine());
+			sc.nextLine();
+		}
+		try {
+			List<Object> myList=Application.AfficherMessage(message,2, 2, 1, 1);
+			for(int i=0;i<myList.size();i++) {
+				System.out.println(myList.get(i));
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -73,11 +119,27 @@ public class Application {
 		return 1;
 	}
 	
-	public static void  MenuLogin() {
+	public static int  MenuLogin() {
 		
 		System.out.println("----------Menu Login ----------------");
-		System.out.println("Saisir votre login");
+		System.out.println("1----Saisir login et mot de passe-----");
+		System.out.println("2--------Quitter-----");
 		
+		Scanner sc=new Scanner(System.in);
+		int choix=sc.nextInt();
+		return choix;
+		
+	}
+	public static void MenuLoginProc() {
+		int choix=MenuLogin();
+		switch(choix) {
+		case 1:
+			break;
+		
+		case 2:
+			Application.quitterApp();
+			break;
+		}
 	}
 	
 	
@@ -92,6 +154,12 @@ public class Application {
 		Scanner sc=new Scanner(System.in);
 		int choix=sc.nextInt();
 		return choix;
+	}
+	public static void menuStatusProc() {
+		int choix=menuStatus();
+		if(choix==1) {
+			menuGestionResponsableBiblioProc();
+		}
 	}
 	
 	public static int menuInventaire() {
@@ -162,6 +230,82 @@ public class Application {
 		return choix;
 		
 	}
+	
+	public static void menuGestionResponsableBiblioProc() {
+		int choix=menuGestionResponsableBiblio();
+		switch(choix) {
+		case 1:
+			
+			break;
+		case 2:
+			break;
+		case 9:
+			menuStatusProc();
+			break;
+		case 11:
+			Application.quitterApp();
+			break;
+		}
+	}
+	
+	public static void quitterApp() {
+		System.out.println("Au revoir ");
+		System.exit(1);
+	}
+	public static String hashWithMd5(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		
+		// this function is as the same as php 
+		// don't ask me how, copy and paste from indian guy
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(input.getBytes("UTF-8"));
+		BigInteger hash = new BigInteger(1, md.digest());
+		String result = hash.toString(16);
+		if ((result.length() % 2) != 0) {
+		  result = "0" + result;
+		}
+		return result;
+	}
+	
+	public static List<Object> AfficherMessage(ArrayList<String> messages,int nbrString,int nbrInt,int nbrFloat,int NbrDate) throws ParseException {
+
+				List<Object> myList = Lists.newArrayList();
+				Scanner sc=new Scanner(System.in);
+				for(int i=0;i<messages.size();i++) {
+					System.out.println(messages.get(i));
+					if(i<nbrString) {
+						String str=sc.nextLine();
+						myList.add(str);
+					}
+					if(i>=nbrString && i<nbrString+nbrInt) {
+						int number=sc.nextInt();
+						myList.add(number);
+					}
+					if(i>=nbrString+nbrInt && i<nbrString+nbrInt+nbrFloat) {
+						
+						float fl=sc.nextFloat();
+						myList.add(fl);
+					}
+					if(i>=nbrString+nbrInt+nbrFloat && i<nbrString+nbrInt+nbrFloat+NbrDate) {
+						String dateString=sc.nextLine();
+						 Date date=new SimpleDateFormat("dd-MM-yyyy").parse(dateString);
+						 myList.add(date);
+						
+					}
+					sc.nextLine();
+				}
+			
+				/*myList.add("String");
+				myList.add(123);
+				myList.add(true);
+				
+				// Retrieving elements without casting
+				String str = (String) myList.get(0);
+				int num = (int) myList.get(1);
+				boolean bool = (boolean) myList.get(2);*/
+				return myList;
+		}
+	
+	
 	
 	
 

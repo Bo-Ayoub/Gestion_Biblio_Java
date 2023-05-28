@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
@@ -13,7 +15,11 @@ public abstract class Personne {
 	private String NumeroTelphone;
 	private String CIN;
 	private Date DateNaissance;
+	private String login;
+	private String password;
 	public static int cpt;
+	
+	public static ArrayList<Personne> personnes=new ArrayList<Personne>();
 	
 	//constructuers
 	
@@ -80,6 +86,18 @@ public abstract class Personne {
 	
 	// les methodes
 	
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getAge() {
 		LocalDate curDate = LocalDate.now();  
 		LocalDate date = LocalDate.ofInstant(this.DateNaissance.toInstant(), ZoneId.systemDefault());
