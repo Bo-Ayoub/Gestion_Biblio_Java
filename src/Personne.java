@@ -104,10 +104,8 @@ public abstract class Personne {
 		return Period.between(date,curDate).getYears();
 	}
 	
-	@Override
-	public String toString() {
-		return this.Nom+" "+this.Prenom+" "+this.NumeroTelphone+" "+this.CIN+" "+this.getAge();
-	}
+	
+
 	
 	
 }

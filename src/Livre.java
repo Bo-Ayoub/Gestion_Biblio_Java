@@ -14,7 +14,7 @@ public class Livre {
 	private int NombrePage;
 	private float Prix;
 	public static int cpt;
-	public static ArrayList<Livre> livres=new ArrayList<Livre>();
+	public static ArrayList<Livre> livres=new ArrayList<Livre>(); // la list des livres dans la biblio
 	private  ArrayList<Auteur> auteurs =new ArrayList<Auteur>();
 	private ArrayList<Categorie> Categorie=new ArrayList<Categorie>();
 	private ArrayList<Langue> languesTraduites=new ArrayList<Langue>();
@@ -56,7 +56,7 @@ public class Livre {
 
 	@Override
 	public String toString() {
-		return "Livre [ID=" + ID + ", Titre=" + Titre + ", ISBN=" + ISBN + ", Description=" + Description
+		return "Livre [ID=" + ID + ", Titre=" + Titre + ", ISBN=" + ISBN 
 				+ ", DateParution=" + DateParution + ", NombrePage=" + NombrePage + ", Prix=" + Prix + "]";
 	}
 
@@ -209,6 +209,12 @@ public class Livre {
 		sc.nextLine();
 		
 		Livre.livres.add(this);
+	}
+	
+	
+	public void remplirLivre() {
+		
+		
 	}
 	
 	
