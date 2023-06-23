@@ -13,6 +13,7 @@ import java.sql.Statement;
 
 public class Connexion {
 
+
 /*public void Ajouter(Personne p) throws ClassNotFoundException, SQLException {
 		
 		Connection conn=this.openConnexion();
